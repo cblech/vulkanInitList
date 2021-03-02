@@ -1,6 +1,6 @@
 # Vulkan Initializer List
 
-This repository contains ReSharper C++ Templates for Vulkan Structs.
+This repository contains ReSharper C++ Templates for Vulkan Structs. It currently only supports the C++ bindings of Vulkan. 
 
 ## Installation
 
@@ -17,8 +17,8 @@ It is incredibly easy to build this yourself. You dont even need any kind of com
 All you need is a reasonably new Web Browser with JavaScript enabled. 
 
 - Download this Repository to your PC.
-- Open `VulkanSpec.html` in a Web Browser. Give it a Second to load the file, it is quite big.
-- Click the big `Generate` button. Give it another Second to generate the Template file.
+- Open `VulkanSpec.html` in a Web Browser. Give it a second to load the file, it is quite big.
+- Click the big `Generate` button. Give it another second to generate the Template file.
 - Your Browser should Prompt you to "Download" a file called `VulkanStructTemplates.DotSettings`. Save it somewhere
 - Now you can install this file (see the Installation section above)
 
