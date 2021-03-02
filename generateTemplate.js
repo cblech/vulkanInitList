@@ -127,7 +127,7 @@ if (outputMockup) {
 }
 
 // ################################################################
-let outputReSharperCppBindings = true; // activate / deactivate ReSharper Cpp output
+let outputReSharperCppBindings = false; // activate / deactivate ReSharper Cpp output
 if (outputReSharperCppBindings) {
     let defaultValues={
         "pNext":"{}",
@@ -175,23 +175,55 @@ if (outputReSharperCppBindings) {
 
     download("VulkanTemplatesCpp.DotSettings",savetext);
 }
-/*
 
+// ################################################################
+let outputReSharperCBindings = true; // activate / deactivate ReSharper Cpp output
+if (outputReSharperCBindings) {
+    let defaultValues={
+        "pNext":"NULL",
+        "flags":"0"
+    };
+    var savetext='<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">\n';
 
+    for (let struct of allStructs) { // iterate over all vkStructs
+        //Generate id for struct
+        let ID ="";
+        for (let i = 0; i < 32; i++) {
+            ID += Math.floor(Math.random()*16).toString(16);
+        }
+        ID=ID.toUpperCase(); // set struct ID
 
+        savetext+=
+            '\t<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/@KeyIndexDefined">True</s:Boolean>\n' +
+            '\t<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/Shortcut/@EntryValue">'+struct.name+'Init</s:String>\n' +
+            '\t<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/Text/@EntryValue">Vk'+struct.name+' $name$;&#xD;\n';
 
+        for (let member of struct.members) { // iterate over all vkMembers in a vkStruct
+            let defaultVal= defaultValues[member.name]?defaultValues[member.name]:""; //find default value
 
+            if(member.name === "sType"){ // add the sType for the C Bindings
+                savetext+='$name$.sType = '+struct.sType+';&#xD;\n';
+            }else{
+                savetext+='$name$.'+member.name+' = '+defaultVal+';&#xD;\n';
+            }
 
+        }
 
+        savetext+=
+            '</s:String>\n' +
+            '\t<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/Reformat/@EntryValue">True</s:Boolean>\n' +
+            '\t<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>\n' +
+            '\t<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/Categories/=Vulkan/@EntryIndexedValue">Vulkan</s:String>\n' +
+            '\t<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>\n' +
+            '\t<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/Scope/=F6696F8185506F41B9C4252540BE9C18/@KeyIndexDefined">True</s:Boolean>\n' +
+            '\t<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/Scope/=F6696F8185506F41B9C4252540BE9C18/Type/@EntryValue">InCppFile</s:String>\n' +
+            '\t<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/Field/=name/@KeyIndexDefined">True</s:Boolean>\n' +
+            '\t<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/Field/=name/Expression/@EntryValue">suggestVariableName()</s:String>\n' +
+            '\t<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/='+ID+'/Field/=name/Order/@EntryValue">0</s:Int64>\n\n\n';
 
+    }
 
+    savetext+='</wpf:ResourceDictionary>';
 
-
-
-
-
-
-
-
-
-*/
+    download("VulkanTemplatesC.DotSettings",savetext);
+}
