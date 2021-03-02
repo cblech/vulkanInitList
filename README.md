@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/11379989/109603741-8ecf8000-7b22-11eb-
 - Make sure, you are in the `Live Templates` Tab
 - Click the `Import...` button on the top of the Template Explorer.
 - Navigate to the `.DotSettings` file, select it and click on Open.
-- You should now see the Message: Successfully imported 590 templates
+- You should now see the Message: Successfully imported 588 templates
 
 ## Build it yourself
 
