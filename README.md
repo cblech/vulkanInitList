@@ -1,6 +1,6 @@
 # Vulkan Struct Initialisation Templates
 
-This repository contains ReSharper C++ Templates for Vulkan Structs. It supports C and C++ bindings of Vulkan. 
+This repository contains ReSharper C++ Templates for Vulkan Structs. It supports both vulkan.h and vulkan.hpp 
 
 https://user-images.githubusercontent.com/11379989/109603741-8ecf8000-7b22-11eb-804d-8945789038d3.mp4
 
