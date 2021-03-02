@@ -1,4 +1,4 @@
-# Vulkan Initializer List
+# Vulkan Struct Initialisation Templates
 
 This repository contains ReSharper C++ Templates for Vulkan Structs. It currently only supports the C++ bindings of Vulkan. 
 
