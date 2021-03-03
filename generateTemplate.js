@@ -80,7 +80,10 @@ for (let item of codeBits) {
     }
 }
 
+
 // ################################################################
+
+
 let outputDebug = false; // activate / deactivate Debug output
 if (outputDebug) {
     let debutText = "";
@@ -92,7 +95,10 @@ if (outputDebug) {
     console.log(debutText);
 }
 
+
 // ################################################################
+
+
 let outputMockup = false; // activate / deactivate Mockup output
 if (outputMockup) {
     let defaultValues = {
@@ -126,13 +132,22 @@ if (outputMockup) {
     download("someFileName.mocktemp", outputText);
 }
 
+
 // ################################################################
-let outputReSharperCppBindings = false; // activate / deactivate ReSharper Cpp output
+
+
+let outputReSharperCppBindings = true; // activate / deactivate ReSharper Cpp output
 if (outputReSharperCppBindings) {
     let defaultValues={
-        "pNext":"{}",
-        "flags":"{}"
+        //"pNext":"{}",
+        //"flags":"{}"
     };
+    let hideMembers=[
+        "pNext",
+        "flags",
+        "sType"
+    ];
+
     var savetext='<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">\n';
 
     for (let struct of allStructs) { // iterate over all vkStructs
@@ -151,7 +166,7 @@ if (outputReSharperCppBindings) {
         for (let member of struct.members) { // iterate over all vkMembers in a vkStruct
             let defaultVal= defaultValues[member.name]?defaultValues[member.name]:""; //find default value
 
-            if(member.name === "sType") // skips the sType member for the c++ bindings
+            if(hideMembers.includes(member.name)) // skips the hidden members
                 continue;
 
             savetext+='$name$.'+member.name+' = '+defaultVal+';&#xD;\n';
@@ -176,8 +191,11 @@ if (outputReSharperCppBindings) {
     download("VulkanTemplatesCpp.DotSettings",savetext);
 }
 
+
 // ################################################################
-let outputReSharperCBindings = true; // activate / deactivate ReSharper Cpp output
+
+
+let outputReSharperCBindings = false; // activate / deactivate ReSharper C output
 if (outputReSharperCBindings) {
     let defaultValues={
         "pNext":"NULL",
