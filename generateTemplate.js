@@ -195,7 +195,7 @@ if (outputReSharperCppBindings) {
 // ################################################################
 
 
-let outputReSharperCppDesInitBindings = false; // activate / deactivate ReSharper Cpp designated initializers output
+let outputReSharperCppDesInitBindings = true; // activate / deactivate ReSharper Cpp designated initializers output
 if (outputReSharperCppDesInitBindings) {
     let defaultValues={
         //"pNext":"{}",
@@ -254,7 +254,7 @@ if (outputReSharperCppDesInitBindings) {
 // ################################################################
 
 
-let outputReSharperCBindings = false; // activate / deactivate ReSharper C output
+let outputReSharperCBindings = true; // activate / deactivate ReSharper C output
 if (outputReSharperCBindings) {
     let defaultValues={
         "pNext":"NULL",
