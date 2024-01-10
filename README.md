@@ -29,6 +29,19 @@ All you need is a reasonably new Web Browser with JavaScript enabled.
 
 If you want to use a different Vulkan Spec, you can download it from the Khronos Website. You can find available specs here: https://registry.khronos.org/vulkan/specs/. Make sure to download the full HTML version. E.g.: The Vulkan 1.0 Core without extensions can be found here: https://registry.khronos.org/vulkan/specs/1.0/html/vkspec.html
 
+After downloading the file, you need to add the following code to the html.
+```html
+<!-- Button for template generation -->
+<button style="font-size:80px" onclick="
+    var script = document.createElement('script');
+    script.src = 'generateTemplate.js';
+    document.body.appendChild(script);
+">Generate</button>
+<!--/ Button for template generation -->
+```
+
+You can add it anywhere in the `<body>` tag. I recommend adding it directly after the title. (You can search for `</h1>` in the file)
+
 ## Bug Reports
 
 I haven't done any extensive testing on this. If you find a bug or another problem, please open an Issue 
